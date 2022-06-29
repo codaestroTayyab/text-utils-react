@@ -11,7 +11,8 @@ export default function Navbar(prop) {
         className={`navbar navbar-expand-lg navbar-${prop.mode} bg-${prop.mode}`}
       >
         <div className="container-fluid">
-          <Link className="navbar-brand" to="/">
+          {/* <Link className="navbar-brand" to="/"> */}
+          <a className="navbar-brand" href="#">
             <img
               src={logo}
               width="30"
@@ -20,7 +21,7 @@ export default function Navbar(prop) {
               alt=""
             />
             {prop.title}
-          </Link>
+          </a>
           <button
             className="navbar-toggler"
             type="button"
@@ -35,15 +36,18 @@ export default function Navbar(prop) {
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
               <li className="nav-item">
-                <Link className="nav-link active" aria-current="page" to="/">
+                {/* <Link className="nav-link active" aria-current="page" to="/">
                   Home
-                </Link>
+                </Link> */}
+                <a className="nav-link active" aria-current="page" href="#">
+                  Home
+                </a>
               </li>
-              <li className="nav-item">
+              {/* <li className="nav-item">
                 <Link className="nav-link" to="about">
                   {prop.aboutText}
                 </Link>
-              </li>
+              </li> */}
               <li className="nav-item my-2 mx-2">
                 <div className={`form-check form-switch text-${prop.mode==='light'?'dark':'light'}`}>
                   <input
