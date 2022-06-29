@@ -121,7 +121,6 @@ const handleExtraSpaces = () => {
         <button className="btn btn-primary my-2 mx-1" onClick={handleExtraSpaces}>
           Remove Extra Spaces
         </button>
-
         <button className="btn btn-primary my-2 mx-1" onClick={handleSpeak}>
           Speak the Text
         </button>
