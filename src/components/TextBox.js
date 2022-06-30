@@ -17,34 +17,32 @@ export default function TextBox(props) {
   };
 
   const onAlternatingCase = () => {
-    let newtext = ""
+    let newtext = "";
     for (let index = 0; index < text.length; index++) {
-        if ((index % 2) === 0) {
-            newtext += text[index].toLowerCase()
-        }
-        else {
-            newtext += text[index].toUpperCase()
-        }
-
+      if (index % 2 === 0) {
+        newtext += text[index].toLowerCase();
+      } else {
+        newtext += text[index].toUpperCase();
+      }
     }
-    setText(newtext)
+    setText(newtext);
     props.alertShow("Text converted to Alternating Case!", "success");
-}
+  };
 
-const handleSpeak = () => {
-  let msg = new SpeechSynthesisUtterance();
-  msg.text = text;
-  window.speechSynthesis.speak(msg);
-  }
+  const handleSpeak = () => {
+    let msg = new SpeechSynthesisUtterance();
+    msg.text = text;
+    window.speechSynthesis.speak(msg);
+    props.alertShow("Text will be spoken in some seconds!", "success");
 
-  const handleFindAndReplace = () =>{
+  };
+
+  const handleFindAndReplace = () => {
     let find = document.getElementById("find").value;
     let replace = document.getElementById("replace").value;
-    let newText = text.replaceAll(find,replace);
+    let newText = text.replaceAll(find, replace);
     setText(newText);
-}
-
-
+  };
 
   const handleCapClick = () => {
     let arr = text.split(" ");
@@ -54,37 +52,31 @@ const handleSpeak = () => {
     let newText = arr.join(" ");
     setText(newText);
     props.alertShow("Text converted to Capitalized Case!", "success");
-  }
+  };
 
   const handleCopy = () => {
-    console.log("I am copy");
     var text = document.getElementById("exampleFormControlTextarea1");
     text.select();
-    text.setSelectionRange(0, 9999);
     navigator.clipboard.writeText(text.value);
-}
+    document.getSelection().removeAllRanges();
+    props.alertShow("Text copied to Clipboard", "success");
+  };
 
-const handleExtraSpaces = () => {
-  let newText = text.split(/[ ]+/);
-  setText(newText.join(" "))
-}
-  
+  const handleExtraSpaces = () => {
+    let newText = text.split(/[ ]+/);
+    setText(newText.join(" "));
+    props.alertShow("Extra Spaces are removed", "success");
+  };
+
   const handleClearClick = () => {
     let newText = "";
     setText(newText);
     props.alertShow("Text Cleared!", "success");
-  }
+  };
 
   const handleChange = (event) => {
     setText(event.target.value);
   };
-
-  const wordCounter = (str) =>{
-    str = str.replace(/(^\s*)|(\s*$)/gi,"");
-    str = str.replace(/[ ]{2,}/gi," ");
-    let result = str.replace(/\n /,"\n");
-    return result;
-  }
 
   return (
     <>
@@ -102,48 +94,104 @@ const handleExtraSpaces = () => {
           value={text}
           onChange={handleChange}
         ></textarea>
-        
-        <button className="btn btn-primary my-2 mx-1" onClick={handleUpClick}>
+
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-2 mx-1"
+          onClick={handleUpClick}
+        >
           UPPERCASE
         </button>
-        <button className="btn btn-primary my-2 mx-1" onClick={handleLowClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-2 mx-1"
+          onClick={handleLowClick}
+        >
           lowercase
         </button>
-        <button className="btn btn-primary my-2 mx-1" onClick={handleCapClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-2 mx-1"
+          onClick={handleCapClick}
+        >
           Capitalized Case
         </button>
-        <button className="btn btn-primary my-2 mx-1" onClick={onAlternatingCase}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-2 mx-1"
+          onClick={onAlternatingCase}
+        >
           aLtErNaTiNg Case
         </button>
-        <button className="btn btn-primary my-2 mx-1" onClick={handleCopy}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-2 mx-1"
+          onClick={handleCopy}
+        >
           Copy Text
         </button>
-        <button className="btn btn-primary my-2 mx-1" onClick={handleExtraSpaces}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-2 mx-1"
+          onClick={handleExtraSpaces}
+        >
           Remove Extra Spaces
         </button>
-        <button className="btn btn-primary my-2 mx-1" onClick={handleSpeak}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-primary my-2 mx-1"
+          onClick={handleSpeak}
+        >
           Speak the Text
         </button>
 
-        <button className="btn btn-secondary my-2 mx-1" onClick={handleClearClick}>
+        <button
+          disabled={text.length === 0}
+          className="btn btn-secondary my-2 mx-1"
+          onClick={handleClearClick}
+        >
           Clear Text
         </button>
       </div>
       <div className="container">
         <h3>Info about Text</h3>
         <p>
-          
-            <li>
-              {text.trim() === '' ? 0 : wordCounter(text).split(' ').length} words and {text.length} characters
-            </li>
-            <li>{0.008 * wordCounter(text).split(' ').length} minutes read</li>
-          
+          <li>
+            {
+              text.split(" ").filter((element) => {
+                return element.length !== 0;
+              }).length
+            }{" "}
+            words and {text.length} characters
+          </li>
+          <li>
+            {0.008 *
+              text.split(" ").filter((element) => {
+                return element.length !== 0;
+              }).length}{" "}
+            minutes read
+          </li>
         </p>
         <div className="container my-3">
-            <h3>Find and Replace the text</h3>
-            <input type="text" className="form-control my-2" placeholder="Enter the text you want to change" id="find"/>
-            <input type="text" className="form-control mb-2" placeholder="Enter the new text you want to add" id="replace"/>
-            <button className="btn btn-primary mb-3 mx-1" onClick={handleFindAndReplace}>Replace</button>
+          <h3>Find and Replace the text</h3>
+          <input
+            type="text"
+            className="form-control my-2"
+            placeholder="Enter the text you want to change"
+            id="find"
+          />
+          <input
+            type="text"
+            className="form-control mb-2"
+            placeholder="Enter the new text you want to add"
+            id="replace"
+          />
+          <button
+            className="btn btn-primary mb-3 mx-1"
+            onClick={handleFindAndReplace}
+          >
+            Replace
+          </button>
         </div>
         <h2>Preview</h2>
         {text}
