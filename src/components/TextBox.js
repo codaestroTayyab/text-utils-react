@@ -55,10 +55,7 @@ export default function TextBox(props) {
   };
 
   const handleCopy = () => {
-    var text = document.getElementById("exampleFormControlTextarea1");
-    text.select();
-    navigator.clipboard.writeText(text.value);
-    document.getSelection().removeAllRanges();
+    navigator.clipboard.writeText(text);
     props.alertShow("Text copied to Clipboard", "success");
   };
 
@@ -158,7 +155,7 @@ export default function TextBox(props) {
         <p>
           <li>
             {
-              text.split(" ").filter((element) => {
+              text.split(/\s+/).filter((element) => {
                 return element.length !== 0;
               }).length
             }{" "}
