@@ -1,7 +1,7 @@
 import React from "react";
 import propTypes from "prop-types";
 import ColorButtons from "./ColorButtons";
-import logo from "../textUtilsIcon.jpg"
+import logo from "../textUtilsIcon.jpg";
 import { Link } from "react-router-dom";
 
 export default function Navbar(prop) {
@@ -43,44 +43,38 @@ export default function Navbar(prop) {
                   Home
                 </a>
               </li>
-              {/* <li className="nav-item">
+            </ul>
+            {/* <li className="nav-item">
                 <Link className="nav-link" to="about">
                   {prop.aboutText}
                 </Link>
               </li> */}
-              <li className="nav-item my-2 mx-2">
-                <div className={`form-check form-switch text-${prop.mode==='light'?'dark':'light'}`}>
-                  <input
-                    className="form-check-input"
-                    onClick={prop.lightDarkMode}
-                    type="checkbox"
-                    role="switch"
-                    id="flexSwitchCheckDefault"
-                    
-                  />
-                  <label
-                    className="form-check-label"
-                    htmlFor="flexSwitchCheckDefault"
-                  >
-                    Dark mode
-                  </label>
-                </div>
-              </li>
+
+            <ul className="navbar-nav me-auto justify-content-center">
               <li className="nav-item">
-                <ColorButtons toggle = {prop.toggle}/>
+                <ColorButtons toggle={prop.toggle} />
               </li>
             </ul>
-            <form className="d-flex" role="search">
+
+            <div
+              className={`form-check form-switch text-${
+                prop.mode === "light" ? "dark" : "light"
+              }`}
+            >
               <input
-                className="form-control me-2"
-                type="search"
-                placeholder="Search"
-                aria-label="Search"
+                className="form-check-input"
+                onClick={prop.lightDarkMode}
+                type="checkbox"
+                role="switch"
+                id="flexSwitchCheckDefault"
               />
-              <button className="btn btn-outline-primary" type="submit">
-                Search
-              </button>
-            </form>
+              <label
+                className="form-check-label"
+                htmlFor="flexSwitchCheckDefault"
+              >
+                Dark mode
+              </label>
+            </div>
           </div>
         </div>
       </nav>
