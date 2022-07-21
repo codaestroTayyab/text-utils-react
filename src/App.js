@@ -99,7 +99,7 @@ function App() {
     <>
       {/* <BrowserRouter> */}
         <Navbar
-          title="Text Utilities"
+          title="Texter"
           mode={mode}
           toggle={toggleMode}
           lightDarkMode={lightDarkMode}
@@ -109,7 +109,7 @@ function App() {
           {/* <Routes> */}
             {/* <Route exact path="/" element = {<TextBox heading="Text Analyzer" alertShow={alertShow} />}/>
             <Route exact path="about" element = {<About/> }/> */}
-            <TextBox heading="Text Analyzer" alertShow={alertShow} />
+            <TextBox heading="Texter - Word Counter, Text Manipulator" alertShow={alertShow} />
 
           {/* </Routes> */}
         </div>
