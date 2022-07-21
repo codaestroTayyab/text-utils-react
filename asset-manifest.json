@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/text-utils-react/static/css/main.073c9b0a.css",
-    "main.js": "/text-utils-react/static/js/main.20d09711.js",
-    "static/js/787.719ec76d.chunk.js": "/text-utils-react/static/js/787.719ec76d.chunk.js",
-    "static/media/textUtilsIcon.jpg": "/text-utils-react/static/media/textUtilsIcon.3b6497cf8d416b0c013b.jpg",
-    "index.html": "/text-utils-react/index.html",
-    "main.073c9b0a.css.map": "/text-utils-react/static/css/main.073c9b0a.css.map",
-    "main.20d09711.js.map": "/text-utils-react/static/js/main.20d09711.js.map",
-    "787.719ec76d.chunk.js.map": "/text-utils-react/static/js/787.719ec76d.chunk.js.map"
+    "main.css": "/texter-react-app/static/css/main.073c9b0a.css",
+    "main.js": "/texter-react-app/static/js/main.073c74e3.js",
+    "static/js/787.719ec76d.chunk.js": "/texter-react-app/static/js/787.719ec76d.chunk.js",
+    "static/media/textUtilsIcon.jpg": "/texter-react-app/static/media/textUtilsIcon.3b6497cf8d416b0c013b.jpg",
+    "index.html": "/texter-react-app/index.html",
+    "main.073c9b0a.css.map": "/texter-react-app/static/css/main.073c9b0a.css.map",
+    "main.073c74e3.js.map": "/texter-react-app/static/js/main.073c74e3.js.map",
+    "787.719ec76d.chunk.js.map": "/texter-react-app/static/js/787.719ec76d.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.20d09711.js"
+    "static/js/main.073c74e3.js"
   ]
 }
